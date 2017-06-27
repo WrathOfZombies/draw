@@ -1,4 +1,5 @@
-import * as angular from 'angular';
+declare var angular: any;
+
 import * as _fabric from 'fabric';
 let fabric = (_fabric as any).fabric as typeof _fabric;
 
@@ -78,8 +79,8 @@ export class DrawStateService {
     }
 
     update(props: any) {
-        /* 
-         * BUG: Some controls grow/disappear when properties such as strokeWidth, 
+        /*
+         * BUG: Some controls grow/disappear when properties such as strokeWidth,
          * scale or radius etc are updated. Upon refreshing they are available.
          */
         this.current = this.canvas.getActiveObject();

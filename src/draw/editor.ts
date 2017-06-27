@@ -1,4 +1,5 @@
-import * as angular from 'angular';
+declare var angular: any;
+
 import * as $ from 'jquery';
 import { DrawModule } from './module';
 import { DrawError } from './core';
@@ -45,7 +46,7 @@ export class DrawController {
         this.state.canvas.on('object:selected', () => this._scope.$applyAsync(() => {
             this.properties = _update();
             /*
-             * BUG: Apply doesn't trigger change detection. 
+             * BUG: Apply doesn't trigger change detection.
              * `properties` is initializated but doesnt show up on the UI
              */
         }));

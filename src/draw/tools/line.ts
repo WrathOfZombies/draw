@@ -25,9 +25,9 @@ export const Line: Tool = {
     icon: 'CalculatorSubtract'
 };
 
-export const drawLine = (options?: fabric.ILineOptions): fabric.Rect => {
+export const drawLine = (options?: fabric.ILineOptions): fabric.Line => {
     return new fabric.Line([lineDefaults.x1, lineDefaults.y1, lineDefaults.x2, lineDefaults.y2], {
-        ...lineDefaults,
+        ...lineDefaults as any,
         ...options
     });
 };

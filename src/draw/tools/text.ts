@@ -28,7 +28,7 @@ export const Text: Tool = {
 
 export const drawText = (options?: fabric.ITextOptions): fabric.Text => {
     return new fabric.Text('Text', {
-        ...textDefaults,
+        ...textDefaults as any,
         ...options
     });
 };

@@ -1,4 +1,4 @@
-import * as angular from 'angular';
+declare var angular: any;
 import debounce = require('lodash/debounce');
 import { DrawStateService } from './reducers';
 import { DrawToolsService } from './tools';
@@ -34,10 +34,10 @@ DrawModule.directive('draw', [
             template: `
                 <canvas class="draw__canvas"></canvas>
                 <section class="draw__toolbox">
-                    <artice class="draw__tool" 
+                    <artice class="draw__tool"
                         ng-repeat="tool in Draw.tools track by $index"
                         ng-class="{'draw__tool--selected':tool.id===Draw.state.tool.id}"
-                        ng-click="Draw.draw(tool)" 
+                        ng-click="Draw.draw(tool)"
                         id="{{tool.id}}" title="{{tool.name}}">
 
                         <i class="ms-Icon ms-Icon--{{tool.icon}}"></i>
@@ -45,36 +45,36 @@ DrawModule.directive('draw', [
                 </section>
                 <section class="draw__properties" ng-if="!Draw.state.current">
                     <h3 class="ms-font-l">Project Actions</h3>
-                    <section class="actions">                                            
+                    <section class="actions">
                         <button class="draw__tool" ng-click="Draw.state.save()">
                             <i class="ms-Icon ms-Icon--Save"></i>
                         </button>
                         <button class="draw__tool" ng-click="Draw.state.open()">
                             <i class="ms-Icon ms-Icon--OpenFile"></i>
-                        </button>  
+                        </button>
                         <button class="draw__tool" ng-click="Draw.state.clear()">
                             <i class="ms-Icon ms-Icon--Delete"></i>
-                        </button>  
+                        </button>
                     </section>
-                    <p>Draw or choose a shape to display its properties</p>                      
+                    <p>Draw or choose a shape to display its properties</p>
                 </section>
-                <section class="draw__properties" ng-if="Draw.state.current">                    
-                    <h3 class="ms-font-l">Tool Actions</h3>                
+                <section class="draw__properties" ng-if="Draw.state.current">
+                    <h3 class="ms-font-l">Tool Actions</h3>
                     <section class="actions">
                         <button class="draw__tool" ng-click="Draw.state.update(Draw.properties)">
                             <i class="ms-Icon ms-Icon--Save"></i>
-                        </button>  
+                        </button>
                         <button class="draw__tool" ng-click="Draw.state.remove()">
                             <i class="ms-Icon ms-Icon--Delete"></i>
-                        </button>                      
+                        </button>
                         <button class="draw__tool" title="Bring to Top" ng-click="Draw.state.bringToFront()">
                             <i class="ms-Icon ms-Icon--GroupedAscending"></i>
                         </button>
                         <button class="draw__tool" title="Send to Back" ng-click="Draw.state.sendToBack()">
                             <i class="ms-Icon ms-Icon--GroupedDescending"></i>
-                        </button> 
-                    </section> 
-                    <section class="scroll-container">                               
+                        </button>
+                    </section>
+                    <section class="scroll-container">
                         <div class="ms-TextField" ng-repeat="(key, value) in (Draw.properties) track by $index">
                             <label class="ms-Label">{{key}}</label>
                             <input class="ms-TextField-field" type="text" ng-model="Draw.properties[key]" placeholder="{{key}}" >
